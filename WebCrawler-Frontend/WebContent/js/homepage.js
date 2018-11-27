@@ -1,5 +1,5 @@
 var app = angular.module("myApp", []);
-app.controller("homepageController", function($scope,$window) {
+app.controller("homepageController", function($scope,$window,$http) {
 
 	 $scope.getActiveUser = function (){
 	        if($window.sessionStorage.getItem("userLoged")!=null){
@@ -12,6 +12,20 @@ app.controller("homepageController", function($scope,$window) {
     $scope.logoutFunction = function () {
 		$window.sessionStorage.clear();
     };
+
+    $scope.searchFunction = function (product) {
+		
+		$http({
+			method: 'GET',
+			url: 'http://localhost:8090/webcrawler/search/' + product,
+		})
+			.then(function (response) {
+				window.alert("Ati cautat " +  response.data)
+			}).catch(function (error) {
+				window.alert("A aparut o eroare : " + error);
+				console.log(error);
+			});
+	};
     
 });
 
