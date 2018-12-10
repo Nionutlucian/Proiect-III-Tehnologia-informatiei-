@@ -19,7 +19,7 @@ app.controller("registerController", function ($scope, $http, $window) {
 		console.log(JSON.stringify(obj));
 		$http({
 			method: 'POST',
-			url: 'http://localhost:8090/webcrawler/register',
+			url: 'http://localhost:8091/webcrawler/register',
 			data: JSON.stringify(obj),
 			headers: { 'Content-type': 'application/json' }
 		})
@@ -51,7 +51,7 @@ app.controller("loginController", function ($scope, $http, $window) {
 		console.log(JSON.stringify(obj));
 		$http({
 			method: 'POST',
-			url: 'http://localhost:8090/webcrawler/login',
+			url: 'http://localhost:8091/webcrawler/login',
 			data: JSON.stringify(obj),
 			headers: { 'Content-type': 'application/json' }
 		})
