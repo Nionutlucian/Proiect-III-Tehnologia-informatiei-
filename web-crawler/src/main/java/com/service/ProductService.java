@@ -1,15 +1,21 @@
 package com.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
+
+import com.model.Product;
+
 import handler.HtmlHandler;
 
 @Service
 public class ProductService {
 
-	HtmlHandler handlerHtml = new HtmlHandler("https://www.emag.ro/search/tv/p2");
+	HtmlHandler handlerHtml;
 	
-	public String searchProduct() throws IOException {
+	public ArrayList<Product> searchProduct(String searchedProduct,int pageIndex) throws IOException {
+		handlerHtml  = new HtmlHandler("https://www.emag.ro/search/" + searchedProduct + "/p" + pageIndex);
 		return handlerHtml.test();
 	}
 	
