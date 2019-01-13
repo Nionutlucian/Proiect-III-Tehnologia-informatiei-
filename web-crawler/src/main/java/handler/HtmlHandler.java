@@ -3,6 +3,7 @@ package handler;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -50,9 +51,40 @@ public class HtmlHandler {
 		}
 
 		for (Product p : products) {
-			System.out.println(p.toString());
+			String x = p.getUrl();
+			String y = x.substring(x.indexOf("/"), x.indexOf("/pd"));
+			String z = y.substring(y.lastIndexOf("-") + 1);
+			p.setCodProdus(z);
+			if(getCelPrice(z)==null) {
+				p.setCelPrice("1000000");
+			}else {
+			p.setCelPrice(getCelPrice(z));
+			}
+			//System.out.println(p.toString());
+		}
+		for(Product p : products) {
+			String x = p.getPrice().replace(".", "");
+			if(Integer.valueOf(x) > Integer.valueOf(p.getCelPrice()) && p.getCelPrice() !=null) {
+				p.setProvider("CEL");
+				p.setPrice(p.getCelPrice());
+			}
 		}
 
 		return products;
+	}
+	
+	
+	public String getCelPrice(String codProd) throws IOException {
+		doc = Jsoup.connect("http://www.cel.ro/cauta/" + codProd + "/").get();
+		Elements productsBottom = doc.getElementsByClass("pret_n");
+		String x = null;
+		String y = null;
+		for (Element p : productsBottom) {
+			 x = p.getElementsByTag("b").text();
+//			 System.out.println(x.substring(0, x.indexOf(" lei")));
+			 y = x.substring(0, x.indexOf(" lei"));
+			 
+		}
+		return y;
 	}
 }

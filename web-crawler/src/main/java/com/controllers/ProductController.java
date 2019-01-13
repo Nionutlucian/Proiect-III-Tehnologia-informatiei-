@@ -33,5 +33,16 @@ public class ProductController {
 		}
 	}
 	
+//	@RequestMapping(value="/search/{productCod}", method = RequestMethod.GET)
+//	public @ResponseBody Product search(@PathVariable(value="productCod") String product) {
+//		try {
+//			return productService.getCelPrice(product);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
+	
 	
 }

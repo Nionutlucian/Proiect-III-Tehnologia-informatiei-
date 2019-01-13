@@ -19,5 +19,10 @@ public class ProductService {
 		return handlerHtml.test();
 	}
 	
+//	public Product getCelPrice(String codProd) throws IOException {
+//		handlerHtml  = new HtmlHandler("https://www.emag.ro/search/");
+//		return handlerHtml.getCelPrice(codProd);
+//	}
+	
 	
 }

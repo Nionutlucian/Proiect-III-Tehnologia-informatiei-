@@ -7,7 +7,25 @@ public class Product {
 	private String image;
 	private String price;
 	private String url;
+	private String codProdus;
+	private String celPrice;
 	
+	public String getCelPrice() {
+		return celPrice;
+	}
+
+	public void setCelPrice(String celPrice) {
+		this.celPrice = celPrice;
+	}
+
+	public String getCodProdus() {
+		return codProdus;
+	}
+
+	public void setCodProdus(String codProdus) {
+		this.codProdus = codProdus;
+	}
+
 	public String getUrl() {
 		return url;
 	}
