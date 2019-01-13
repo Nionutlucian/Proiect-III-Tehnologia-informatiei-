@@ -3,6 +3,7 @@ app.controller("homepageController", function($scope,$window,$http) {
 
 $scope.products = JSON.parse($window.sessionStorage.getItem("products")); 
 $scope.favProducts = JSON.parse($window.sessionStorage.getItem("favProducts")); 
+$scope.celPrice = JSON.parse($window.sessionStorage.getItem("celPrice"));
 var pagArray = [1,2,3];
 $scope.paginationArray = pagArray;
 $scope.searchedProduct = $window.sessionStorage.getItem("searchedProduct");
@@ -43,7 +44,7 @@ $scope.decreaseFunction = function decreasePageIndex(){
           if (width >= 100) {
             clearInterval(id);
           } else {
-            width++; 
+            width+=0.02; 
             elem.style.width = width + '%'; 
           }
         }
@@ -63,7 +64,9 @@ $scope.decreaseFunction = function decreasePageIndex(){
 				window.alert("A aparut o eroare : " + error);
 				console.log(error);
 			});
-	};
+    };
+    
+    
     var productsFav = [];
     $scope.addToFavorite = function (image, url, price, title){
         var obj = {

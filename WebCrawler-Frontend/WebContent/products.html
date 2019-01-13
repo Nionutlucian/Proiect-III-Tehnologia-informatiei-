@@ -35,7 +35,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="favorites.html"><span style="color: red;" >&#10084</span></a></li>
-                <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> {{getActiveUser().name}}</a></li>
+                <li><a href="profile.html"><span class="glyphicon glyphicon-user"></span> {{getActiveUser().name}}</a></li>
                 <li><a ng-click="logoutFunction()"><span class="glyphicon glyphicon-log-in"></span> Delogheaza-te</a></li>
             </ul>
         </div>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-md-6 col-xs-6 price">
                                     <h3>
-                                        <label>{{product.price}} lei</label></h3>
+                                        <label id="pret">{{product.price}} lei</label></h3>
                                 </div>
                             </div>
                             <p style="font-size: 12px !important;" >{{product.title}}</p>
