@@ -2,6 +2,7 @@ var app = angular.module("myApp", []);
 app.controller("homepageController", function($scope,$window,$http) {
 
 $scope.products = JSON.parse($window.sessionStorage.getItem("products")); 
+$scope.favProducts = JSON.parse($window.sessionStorage.getItem("favProducts")); 
 var pagArray = [1,2,3];
 $scope.paginationArray = pagArray;
 $scope.searchedProduct = $window.sessionStorage.getItem("searchedProduct");
@@ -63,7 +64,20 @@ $scope.decreaseFunction = function decreasePageIndex(){
 				console.log(error);
 			});
 	};
-    
+    var productsFav = [];
+    $scope.addToFavorite = function (image, url, price, title){
+        var obj = {
+            image: image,
+            url: url,
+            price: price,
+            title: title
+        }
+        productsFav.push(obj);
+        $window.sessionStorage.setItem("favProducts",JSON.stringify(productsFav));
+        console.log($window.sessionStorage.getItem("favProducts"));
+    }
+
+
 });
 
 app.controller("homepage-adminController", function($scope,$window) {
@@ -86,5 +100,4 @@ app.controller("homepage-adminController", function($scope,$window) {
    $scope.logoutFunction = function () {
        $window.sessionStorage.clear();
    };
-   
 });

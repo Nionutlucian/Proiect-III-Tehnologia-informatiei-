@@ -21,6 +21,7 @@
                         style="color: red;">ro</span></a>
             </div>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="favorites.html"><span style="color: red;" >&#10084</span></a></li>
                 <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Inregistrare</a></li>
                 <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Logare</a></li>
             </ul>
@@ -33,6 +34,7 @@
                         style="color: red;">ro</span></a>
             </div>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="favorites.html"><span style="color: red;" >&#10084</span></a></li>
                 <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> {{getActiveUser().name}}</a></li>
                 <li><a ng-click="logoutFunction()"><span class="glyphicon glyphicon-log-in"></span> Delogheaza-te</a></li>
             </ul>
@@ -95,7 +97,7 @@
                             </div>
                             <p style="font-size: 12px !important;" >{{product.title}}</p>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6" ng-click="addToFavorite(product.image,product.url,product.price,product.title)">
                                     <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span>
                                         Favorit</a>
                                 </div>
